@@ -1,27 +1,30 @@
 import React from 'react'
 import { useFormik } from 'formik'
 function OldForm () {
-  const formik = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      channel: ''
-    },
-    onSubmit: values => console.log('Form data', values),
-    validate: values => {
-      let errors = {}
-      if (!values.name) {
-        errors.name = 'Required'
-      }
-      if (!values.email) {
-        errors.email = 'Required'
-      }
-      if (!values.channel) {
-        errors.channel = 'Required'
-      }
-
-      return errors
+  const initialValues = {
+    name: '',
+    email: '',
+    channel: ''
+  }
+  const onSubmit = values => console.log('Form data', values)
+  const validate = values => {
+    let errors = {}
+    if (!values.name) {
+      errors.name = 'Required'
     }
+    if (!values.email) {
+      errors.email = 'Required'
+    }
+    if (!values.channel) {
+      errors.channel = 'Required'
+    }
+
+    return errors
+  }
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validate
   })
 
   return (
